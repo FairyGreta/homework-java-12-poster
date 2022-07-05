@@ -1,23 +1,27 @@
 package ru.netology.homework;
-
-import java.nio.file.attribute.PosixFileAttributes;
+import ru.netology.repository.PosterRepository;
 
 public class PosterManager {
     protected String[] movies = new String[0];
+    private PosterRepository repo;
     protected int limit;
 
-    public PosterManager(int limit) {
-        this.limit = limit;
+//    public PosterManager(PosterRepository limit) {
+//        this.limit = limit;
+//    }
+
+    public PosterManager(PosterRepository repo) {
+        this.repo = this.repo;
     }
 
-    public PosterManager () {
+    public PosterManager() {
         limit = 10;
     }
 
     public void add(String film) {
         String[] tmp = new String[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[i];
+            tmp[i] = String.valueOf(movies[i]);
         }
         tmp[tmp.length - 1] = film;
         movies = tmp;
@@ -36,7 +40,7 @@ public class PosterManager {
         }
         String[] ans = new String[resultLength];
         for (int i = 0; i < ans.length; i++) {
-            ans[i] = movies [movies.length - i - 1];
+            ans[i] = movies[movies.length - i - 1];
         }
         return ans;
     }
