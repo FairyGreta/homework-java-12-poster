@@ -1,12 +1,14 @@
 package ru.netology.repository;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import ru.netology.homework.Poster;
 import ru.netology.homework.PosterManager;
 import ru.netology.repository.PosterRepository;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class PosterRepositoryTest {
@@ -24,13 +26,28 @@ public class PosterRepositoryTest {
 
     @Test
     public void shouldFindAll() {
-        Poster[] movies = {movie1, movie2, movie3, movie4, movie5};
-        doReturn(movies).when(repo).getMovies();
+        //создадим новый массив с афишами
+        Poster[] movies = new Poster[] {movie1, movie2, movie3, movie4, movie5};
+        // определим, что и когда будем возвращать
+        doReturn(movies).when(repo).findAll();
 
-        Poster[] expected = {movie1, movie2, movie3, movie4, movie5};
-        Poster[] actual = repo.findAll();
+        Poster[] expected = new Poster[]{movie1, movie2, movie3, movie4, movie5};
+        Poster[] actual = manager.findAll ();
 
-        Assertions.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
 
     }
+
+//    @Test
+//    public void shouldRemoveById() {
+//        //создадим новый массив с афишами
+//        Poster[] movies = new Poster[] {movie1, movie2, movie3, movie4, movie5, movie6, movie7};
+//        //определим, что и когда будем возвращать
+//        doReturn(movies).when(repo).removeById(2);
+//
+//        Poster[] expected = new Poster[] {movie1, movie3, movie4, movie5, movie6, movie7};
+//        Poster[] actual = manager.removeById();
+//
+//        assertArrayEquals(expected, actual);
+//    }
 }

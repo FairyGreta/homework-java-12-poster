@@ -20,13 +20,14 @@ public class PosterRepository {
         return movies;
     }
 
-    public void save(Poster movie) {
+    public Poster[] save(Poster movie) {
         Poster[] tmp = new Poster[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
             tmp[i] = movies[i];
         }
         tmp[tmp.length - 1] = movie;
         movies = tmp;
+        return movies;
     }
 
     public Poster findById(int id) {
@@ -38,7 +39,7 @@ public class PosterRepository {
         return null;
     }
 
-    public void removeById(int id) {
+    public Poster[] removeById(int id) {
         Poster[] tmp = new Poster[movies.length - 1];
         int copeToIndex = 0;
         for (Poster movie : movies) {
@@ -48,6 +49,7 @@ public class PosterRepository {
             }
         }
         movies = tmp;
+        return movies;
     }
 
     public void removeAll(Poster[] movies) {
